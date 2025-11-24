@@ -4,7 +4,7 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react( )],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -22,7 +22,7 @@ export default defineConfig({
       '/api': {
         target: 'http://localhost:8000',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        rewrite: (path ) => path.replace(/^\/api/, ''),
       },
     },
     allowedHosts: [
