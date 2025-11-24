@@ -29,6 +29,7 @@ const GITHUB_CLIENT_SECRET = process.env.GITHUB_CLIENT_SECRET;
 const NEWSAPI_KEY = process.env.NEWSAPI_KEY;
 const GNEWS_API_KEY = process.env.GNEWS_API_KEY;
 const OPENWEATHER_API_KEY = process.env.OPENWEATHER_API_KEY;
+const HOST_URL = process.env.HOST_URL || `http://localhost:${process.env.PORT || 8000}`;
 const PORT = process.env.PORT || 8000;
 
 // Validação de variáveis essenciais
@@ -306,7 +307,7 @@ app.get("/api/auth/github", (req, res) => {
     return res.status(500).json({ message: "GitHub OAuth não configurado." });
   }
   
-  const redirect_uri = `http://localhost:${PORT}/api/auth/github/callback`;
+  const redirect_uri = `${HOST_URL}/api/auth/github/callback`; 
   const githubAuthUrl = `https://github.com/login/oauth/authorize?client_id=${GITHUB_CLIENT_ID}&redirect_uri=${encodeURIComponent(redirect_uri)}&scope=user:email`;
   
   console.log(`🔄 Redirecionando para autenticação GitHub...`);
